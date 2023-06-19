@@ -1,9 +1,5 @@
 - name: Creating MongoDB database
-  mongodb_command:
-    database: admin
-    command: createDatabase
-    args:
-      name: "{{ database_name }}"
+  shell: mongo --eval 'db.getSiblingDB("{{ database_name }}")'
 
 - name: Creating MongoDB user
   mongodb_user:
