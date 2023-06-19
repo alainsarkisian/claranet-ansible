@@ -1,0 +1,21 @@
+- name: Adding MongoDB Repository
+  become: true
+  template:
+    src: mongodb-org.repo
+    dest: "{{ mongodb_repository_information_file_destination }}/mongodb-org.repo"
+
+- name: Checking if MongoDB repository have been correctly added
+  command: yum repolist
+
+- name: Installing MongoDB
+  yum:
+    name: mongodb-org
+    state: present
+
+- name: Starting mongod service
+  service:
+    name: mongod
+    state: started
+
+- name: Check the status of the mongod service
+  command: systemctl status mongod

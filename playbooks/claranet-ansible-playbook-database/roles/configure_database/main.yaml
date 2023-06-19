@@ -1,0 +1,14 @@
+- name: Creating MongoDB database
+  mongodb_command:
+    database: admin
+    command: createDatabase
+    args:
+      name: "{{ database_name }}"
+
+- name: Creating MongoDB user
+  mongodb_user:
+    database: "{{ database_name }}"
+    name: "{{ database_user }}"
+    password: "{{ database_password }}"
+    roles:
+      - readWrite

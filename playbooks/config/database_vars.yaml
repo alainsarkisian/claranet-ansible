@@ -1,0 +1,5 @@
+mongodb_repository_information_file_destination: /etc/yum.repos.d
+
+database_name: kata-db
+database_user: kata
+database_password: kata
