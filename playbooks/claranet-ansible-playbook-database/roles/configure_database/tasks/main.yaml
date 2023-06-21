@@ -7,10 +7,19 @@
   become: true
 
 - name: Creating MongoDB user
-  become: true
-  mongodb_user:
-    database: "{{ database_name }}"
-    name: "{{ database_user }}"
-    password: "{{ database_password }}"
-    roles:
-      - readWrite
+  shell: |
+    mongosh --eval "
+    db.getSiblingDB('{{ database_name }}').createUser({
+      user: '{{ database_user }}',
+      pwd: '{{ database_password }}',
+      roles: ["readWrite"]
+    })
+    "
+
+
+  # mongodb_user:
+  #   database: "{{ database_name }}"
+  #   name: "{{ database_user }}"
+  #   password: "{{ database_password }}"
+  #   roles:
+  #     - readWrite
