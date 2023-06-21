@@ -1,7 +1,5 @@
 - name: Install PyMongo with pip
-  pip:
-    name: pymongo
-    state: present
+  command: pip install pymongo
 
 - name: Adding MongoDB Repository
   become: true
