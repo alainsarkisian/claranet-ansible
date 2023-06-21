@@ -1,3 +1,6 @@
+- name: Sleep for 10 seconds
+  command: sleep 10
+
 - name: Creating MongoDB database
   shell: mongosh --eval "db.getSiblingDB('{{ database_name }}')"
   become: true
