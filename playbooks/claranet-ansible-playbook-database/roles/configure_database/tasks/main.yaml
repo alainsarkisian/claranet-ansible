@@ -1,4 +1,5 @@
 - name: Sleep for 10 seconds
+  become: true
   command: sleep 10
 
 - name: Creating MongoDB database

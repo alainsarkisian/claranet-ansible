@@ -1,4 +1,5 @@
 - name: Install PyMongo with pip
+  become: true
   command: pip install pymongo
 
 - name: Adding MongoDB Repository
@@ -8,17 +9,21 @@
     dest: "{{ mongodb_repository_information_file_destination }}/mongodb-org.repo"
 
 - name: Checking if MongoDB repository have been correctly added
+  become: true
   command: yum repolist
 
 - name: Installing MongoDB
+  become: true
   yum:
     name: mongodb-org
     state: present
 
 - name: Starting mongod service
+  become: true
   service:
     name: mongod
     state: started
 
 - name: Check the status of the mongod service
+  become: true
   command: systemctl status mongod
