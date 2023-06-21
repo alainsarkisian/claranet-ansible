@@ -1,7 +1,9 @@
 - name: Creating MongoDB database
   shell: mongosh --eval 'db.getSiblingDB("{{ database_name }}")'
+  become: true
 
 - name: Creating MongoDB user
+  become: true
   mongodb_user:
     database: "{{ database_name }}"
     name: "{{ database_user }}"
