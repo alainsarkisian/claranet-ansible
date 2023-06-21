@@ -1,5 +1,5 @@
 - name: Creating MongoDB database
-  shell: mongosh --eval 'db.getSiblingDB("{{ database_name }}")'
+  shell: mongosh --eval "db.getSiblingDB('{{ database_name }}'')"
   become: true
 
 - name: Creating MongoDB user
