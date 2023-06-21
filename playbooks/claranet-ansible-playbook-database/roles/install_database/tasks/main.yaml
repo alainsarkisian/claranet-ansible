@@ -1,6 +1,6 @@
-- name: Install python-pymongo
-  yum:
-    name: python-pymongo
+- name: Install PyMongo with pip
+  pip:
+    name: pymongo
     state: present
 
 - name: Adding MongoDB Repository
