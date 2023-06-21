@@ -1,3 +1,8 @@
+- name: Install python-pymongo
+  yum:
+    name: python-pymongo
+    state: present
+
 - name: Adding MongoDB Repository
   become: true
   template:
