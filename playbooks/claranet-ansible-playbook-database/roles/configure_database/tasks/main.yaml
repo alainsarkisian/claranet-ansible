@@ -12,7 +12,7 @@
     db.getSiblingDB('{{ database_name }}').createUser({
       user: '{{ database_user }}',
       pwd: '{{ database_password }}',
-      roles: ["readWrite"]
+      roles: ['readWrite']
     })
     "
 
