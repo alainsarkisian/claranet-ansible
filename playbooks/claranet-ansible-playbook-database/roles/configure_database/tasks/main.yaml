@@ -3,9 +3,8 @@
   command: sleep 10
 
 - name: Creating MongoDB database
-  shell: mongosh --eval "db.getSiblingDB('{{ database_name }}').createCollection('empty')"
-
   become: true
+  shell: mongosh --eval "db.getSiblingDB('{{ database_name }}').createCollection('empty')"
 
 - name: Creating MongoDB user
   shell: |
@@ -16,3 +15,10 @@
       roles: ['readWrite']
     })
     "
+- name: Schedule mongodump with cron
+  cron:
+    name: Perform MongoDB backup
+    minute: 0
+    hour: 0
+    weekday: 0
+    job: mongodump --db kata-db --out /var/backups/mongobackups/`date +"%m-%d-%y"` >/dev/null 2>&1
