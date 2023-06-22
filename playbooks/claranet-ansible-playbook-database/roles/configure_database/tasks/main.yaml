@@ -15,10 +15,16 @@
       roles: ['readWrite']
     })
     "
-- name: Schedule mongodump with cron
+- name: Create MongoDB Backup Directory
+  file:
+    path: "{{ database_backup_directory }}"
+    state: directory
+    mode: '0755'
+
+- name: Database Backup Every 7 Days
   cron:
-    name: Perform MongoDB backup
+    name: MOngoDB Backup
     minute: 0
     hour: 0
     weekday: 0
-    job: mongodump --db kata-db --out /var/backups/mongobackups/`date +"%m-%d-%y"` >/dev/null 2>&1
+    job: mongodump --db kata-db --out {{ database_backup_directory }}`date +"%m-%d-%y"` >/dev/null 2>&1
