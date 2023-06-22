@@ -3,7 +3,8 @@
   command: sleep 10
 
 - name: Creating MongoDB database
-  shell: mongosh --eval "db.getSiblingDB('{{ database_name }}')"
+  shell: mongosh --eval "db.getSiblingDB('{{ database_name }}').createCollection('empty')"
+
   become: true
 
 - name: Creating MongoDB user
