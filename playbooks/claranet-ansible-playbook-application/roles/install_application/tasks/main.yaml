@@ -1,0 +1,11 @@
+- name: Clone Application Git Repository
+  become: true
+  git:
+    repo: "{{ application_git_repository }}"
+    dest: "{{ application_code_destination }}"
+
+- name: Copy Application Start Script
+  become: true
+  template:
+    src: start.sh.j2
+    dest: "{{ application_code_destination }}/start.sh"

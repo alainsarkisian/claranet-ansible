@@ -1,0 +1,6 @@
+- hosts: localhost
+  vars_files:
+    - ../config/application_vars.yaml
+  roles:
+    - role: roles/install_application
+    - role: roles/configure_application

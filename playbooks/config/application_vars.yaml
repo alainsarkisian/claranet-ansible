@@ -1,0 +1,16 @@
+application_service_destination: /lib/systemd/system/cloud-phoenix-kata.service
+application_start_script: "{{ application_code_destination }}start.sh"
+application_code_destination: "/opt/app/"
+
+application_name: cloud-phoenix-kata
+application_port: "{{ lookup('aws_ssm', '/' + ssm_prefix + '/application/port', region='eu-west-1') }}"
+application_git_repository: https://github.com/claranet-ch/cloud-phoenix-kata.git
+
+database_host: "{{ lookup('aws_ssm', '/' + ssm_prefix + '/database/host', region='eu-west-1') }}"
+database_port: "{{ lookup('aws_ssm', '/' + ssm_prefix + '/database/port', region='eu-west-1') }}"
+database_name: "{{ lookup('aws_ssm', '/' + ssm_prefix + '/database/name', region='eu-west-1') }}"
+
+database_username: "{{ lookup('aws_ssm', '/' + ssm_prefix + '/database/username', region='eu-west-1') }}"
+database_password: "{{ lookup('aws_ssm', '/' + ssm_prefix + '/database/password', region='eu-west-1') }}"
+        
+database_connection_string: "mongodb://{{ database_username }}:{{ database_password }}@{{ database_host }}:{{ database_port }}/{{ database_name }}"
