@@ -1,0 +1,5 @@
+- name: Clone APplication Git Repository
+  become: true
+  git:
+    repo: "{{ application_git_repository }}"
+    dest: "{{ application_code_destination }}"
