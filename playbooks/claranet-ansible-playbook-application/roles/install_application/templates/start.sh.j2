@@ -1,0 +1,10 @@
+export PORT={{ database_port }}
+export DB_CONNECTION_STRING={{ database_connection_string }}
+
+cd {{ application_code_destination }}/cloud-phoenix-kata
+
+echo "Installing dependencies"
+npm install
+
+echo "Starting application"
+npm start

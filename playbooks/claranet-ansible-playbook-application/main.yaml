@@ -1,6 +1,6 @@
 - hosts: localhost
   vars_files:
-    - ../config/database_vars.yaml
+    - ../config/application_vars.yaml
   roles:
-    - role: roles/install_database
-    - role: roles/configure_database
+    - role: roles/install_application
+    - role: roles/configure_application

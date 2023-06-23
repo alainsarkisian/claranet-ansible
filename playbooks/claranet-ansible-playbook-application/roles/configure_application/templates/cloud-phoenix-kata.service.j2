@@ -3,7 +3,7 @@ Description={{ application_name }}
 After=network.target
 
 [Service]
-ExecStart={{ application_service_destination }}
+ExecStart={{ application_start_script }}
 Restart=always
 
 Environment=PORT={{ application_port }}

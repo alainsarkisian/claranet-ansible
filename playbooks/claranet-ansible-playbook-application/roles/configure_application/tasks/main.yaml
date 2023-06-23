@@ -1,0 +1,11 @@
+- name: Copy Application Service
+  become: true
+  template:
+    src: cloud-phoenix-kata.service
+    dest: "{{ application_service_destination }}"
+
+- name: Start The Application Service 
+  become: true
+  service: 
+    name: cloud-phoenix-kata.service
+    state: started 
