@@ -1,12 +1,12 @@
-- name: Sleep for 10 seconds
+- name: Sleep For 10 Seconds
   become: true
   command: sleep 10
 
-- name: Creating MongoDB database
+- name: Creating MongoDB Database
   become: true
   shell: mongosh --eval "db.getSiblingDB('{{ database_name }}').createCollection('empty')"
 
-- name: Creating MongoDB user
+- name: Creating MongoDB User
   become: true
   shell: |
     mongosh --eval "
@@ -26,8 +26,17 @@
 - name: Database Backup Every 7 Days
   become: true
   cron:
-    name: MOngoDB Backup
+    name: MongoDB Backup Creation
     minute: 0
     hour: 0
     weekday: 0
     job: mongodump --db kata-db --out {{ database_backup_directory }}`date +"%m-%d-%y"` >/dev/null 2>&1
+
+- name: Delete Backup If Older Than One Week
+  become: true
+  cron:
+    name: MongoDB Backup Rotation
+    minute: 0
+    hour: 0
+    weekday: 0
+    job: find {{ database_backup_directory }} -mtime +7 -exec rm -rf {} \;
