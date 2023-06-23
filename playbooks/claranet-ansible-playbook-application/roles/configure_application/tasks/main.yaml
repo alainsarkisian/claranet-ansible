@@ -7,6 +7,6 @@
 - name: Start The Application Service 
   become: true
   service: 
-    name: cloud-phoenix-cata
+    name: cloud-phoenix-kata
     state: started
     enabled: yes
