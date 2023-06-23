@@ -8,4 +8,4 @@
   become: true
   service: 
     name: cloud-phoenix-kata.service
-    state: started 
+    state: started
