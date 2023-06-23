@@ -3,7 +3,7 @@ application_start_script: "{{ application_code_destination }}/start.sh"
 application_code_destination: "/opt/app/"
 
 application_name: cloud-phoenix-kata
-application_port: "{{ lookup('amazon.aws.ssm_parameter', '/' + ssm_prefix + '/application/port', region='eu-west-1') }}"
+application_port: "{{ lookup('aws_ssm', '/' + ssm_prefix + '/application/port', region='eu-west-1') }}"
 application_git_repository: https://github.com/claranet-ch/cloud-phoenix-kata.git
 
 database_host: "{{ lookup('aws_ssm', '/' + ssm_prefix + '/database/host', region='eu-west-1') }}"

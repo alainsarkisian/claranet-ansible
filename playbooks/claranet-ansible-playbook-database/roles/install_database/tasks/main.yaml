@@ -1,6 +1,6 @@
-- name: Install PyMongo with pip
-  become: true
-  command: pip install pymongo
+# - name: Install PyMongo with pip
+#   become: true
+#   command: pip install pymongo
 
 - name: Adding MongoDB Repository
   become: true
