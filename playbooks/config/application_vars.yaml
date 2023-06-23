@@ -1,5 +1,5 @@
 application_service_destination: /lib/systemd/system/cloud-phoenix-cata.service
-application_start_script: "{{ application_code_destination }}/start.sh"
+application_start_script: "{{ application_code_destination }}start.sh"
 application_code_destination: "/opt/app/"
 
 application_name: cloud-phoenix-kata
